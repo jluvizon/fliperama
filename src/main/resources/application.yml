@@ -3,15 +3,13 @@ spring:
    application:
     name: fliperama
    datasource:
-      url: jdbc:mysql://localhost:3306/fliperama
-      username: root
-      password: root
-      driver-class-name: com.mysql.cj.jdbc.Driver
-      useSSL: false
+      url: jdbc:postgresql://localhost:5432/fliperama
+      username: postgres
+      password: admin
    jpa:
     hibernate:
       ddl-auto: create-drop
-    database: mysql
+    database: postgresql
 server:
    port: 8080
    contextPath: /fliperama
