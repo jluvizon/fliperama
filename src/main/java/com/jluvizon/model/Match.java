@@ -8,16 +8,24 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Parameter;
+
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
+@NoArgsConstructor
 @Entity(name = "tb_match")
 public class Match implements Serializable {
 
   private static final long serialVersionUID = 5612028913000708372L;
 
   @Id
-  @GeneratedValue
+  @GenericGenerator(name = "matchSequenceGenerator", strategy = "org.hibernate.id.enhanced.SequenceStyleGenerator", parameters = {
+      @Parameter(name = "sequence_name", value = "seq_tb_match"), @Parameter(name = "initial_value", value = "1"),
+      @Parameter(name = "increment_size", value = "1") })
+  @GeneratedValue(generator = "matchSequenceGenerator")
   private Long id;
 
   @ManyToOne
@@ -27,21 +35,21 @@ public class Match implements Serializable {
   private Tournament tournament;
 
   @ManyToOne
-  private Team homeTeam;
+  private Team teamOne;
 
   @ManyToOne
-  private Team awayTeam;
+  private Team teamTwo;
 
   @Column
-  private Integer scoreHomeTeam;
+  private Integer scoreTeamOne;
 
   @Column
-  private Integer scoreAwayTeam;
+  private Integer scoreTeamTwo;
 
-  public Match(Game game, Team homeTeam, Team awayTeam) {
+  public Match(Game game, Team teamOne, Team teamTwo) {
     this.game = game;
-    this.homeTeam = homeTeam;
-    this.awayTeam = awayTeam;
+    this.teamOne = teamOne;
+    this.teamTwo = teamTwo;
   }
 
 }

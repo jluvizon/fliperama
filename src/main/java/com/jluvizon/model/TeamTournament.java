@@ -7,9 +7,11 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
-@Entity
+@NoArgsConstructor
+@Entity(name = "tb_team_tournament")
 public class TeamTournament implements Serializable {
 
   private static final long serialVersionUID = -7279293851097717449L;
