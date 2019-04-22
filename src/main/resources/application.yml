@@ -8,7 +8,7 @@ spring:
       password: admin
    jpa:
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: create
     database: postgresql
 server:
    port: 8080

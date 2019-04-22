@@ -9,10 +9,10 @@ import javax.persistence.ManyToOne;
 import lombok.Data;
 
 @Data
-@Entity(name = "tb_team_player")
-public class TeamPlayer implements Serializable {
+@Entity
+public class TeamTournament implements Serializable {
 
-  private static final long serialVersionUID = 8740729091270572141L;
+  private static final long serialVersionUID = -7279293851097717449L;
 
   @Id
   @ManyToOne
@@ -20,11 +20,11 @@ public class TeamPlayer implements Serializable {
 
   @Id
   @ManyToOne
-  private Player player;
+  private Tournament tournament;
 
-  public TeamPlayer(Team team, Player player) {
+  public TeamTournament(Team team, Tournament tournament) {
+    this.tournament = tournament;
     this.team = team;
-    this.player = player;
   }
 
 }
